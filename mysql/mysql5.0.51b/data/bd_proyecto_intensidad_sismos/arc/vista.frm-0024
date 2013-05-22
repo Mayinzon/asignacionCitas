@@ -1,0 +1,13 @@
+TYPE=VIEW
+query=select `t`.`id_testigo` AS `id_testigo`,`s`.`id_sismo` AS `id_sismo`,`t`.`nombre` AS `nombre`,`t`.`apellido` AS `apellido`,`u`.`latitud` AS `latitud`,`u`.`longitud` AS `longitud`,`r`.`respuesta` AS `respuesta` from `bd_proyecto_intensidad_sismos`.`testigo` `t` join `bd_proyecto_intensidad_sismos`.`ubicacion` `u` join `bd_proyecto_intensidad_sismos`.`respuestaencuesta` `r` join `bd_proyecto_intensidad_sismos`.`encuesta_testigo` `et` join `bd_proyecto_intensidad_sismos`.`preguntas` `p` join `bd_proyecto_intensidad_sismos`.`encuesta` `e` join `bd_proyecto_intensidad_sismos`.`sismo` `s` where ((`t`.`id_ubicacion` = `u`.`id_ubicacion`) and (`t`.`id_testigo` = `et`.`id_testigo`) and (`et`.`id_encuesta` = `e`.`id_encuesta`) and (`et`.`id_encuesta_testigo` = `r`.`id_encuesta_testigo`) and (`r`.`id_preguntas` = `p`.`id_preguntas`) and (`et`.`id_sismo_FK` = `s`.`id_sismo`) and (`s`.`id_sismo` = 8) and ((`p`.`id_preguntas` = 10) or (`p`.`id_preguntas` = 13))) order by `t`.`id_ubicacion`
+md5=26ca7097422cd711fb1c60775d8f0674
+updatable=1
+algorithm=0
+definer_user=root
+definer_host=localhost
+suid=2
+with_check_option=0
+revision=24
+timestamp=2013-03-10 12:50:01
+create-version=1
+source=select t.id_testigo, s.id_sismo, t.nombre, t.apellido, u.latitud, u.longitud, \nr.respuesta from testigo t, ubicacion u, respuestaencuesta r, encuesta_testigo et, preguntas p, encuesta e, sismo s\nwhere t.id_ubicacion = u.id_ubicacion and t.id_testigo = et.id_testigo and et.id_encuesta = e.id_encuesta and et.id_encuesta_testigo = r.id_encuesta_testigo \nand r.id_preguntas = p.id_preguntas and et.id_sismo_FK = s.id_sismo and s.id_sismo = 8 and( p.id_preguntas = 10 or p.id_preguntas = 13 ) \norder by t.id_ubicacion
